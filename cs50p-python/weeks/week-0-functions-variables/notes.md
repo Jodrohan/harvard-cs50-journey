@@ -17,4 +17,13 @@
 
 ```python
 print("hello, world")
+
+## Assignment Completed
+
+### indoor.py
+Convert user input into lowercase text using `.lower()`
+
+```python
+a = input("Enter a string: ")
+print(a.lower())
 ```
