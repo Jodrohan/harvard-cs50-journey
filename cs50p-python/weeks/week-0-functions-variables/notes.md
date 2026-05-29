@@ -13,6 +13,7 @@
 - `float()` converts text into decimal numbers
 - `.lower()` converts text to lowercase
 - `return` sends values back from functions
+- `.replace()` replaces matching text inside a string
 
 ---
 
@@ -48,13 +49,13 @@ print("rohan".capitalize())
 - `.title()` makes the first letter of every word capital
 
 ```python
-print("rohan kumar".title())
+print("rohan somriya".title())
 ```
 
 - `.split()` breaks a single string into multiple parts
 
 ```python
-name = "Rohan Kumar"
+name = "Rohan Somriya"
 first, last = name.split(" ")
 ```
 
