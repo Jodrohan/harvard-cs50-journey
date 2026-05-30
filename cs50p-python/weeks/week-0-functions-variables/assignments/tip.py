@@ -1,9 +1,9 @@
 # Write a Python program that takes a meal cost and a tip percentage as input, calculates the tip amount, and prints the final total to leave.
 def main():
 
-    dollars = dollars_to_float(input("Enter the cost of the meal: "))
+    dollars = dollars_to_float(input("How much was the meal? "))
    
-    tip = percent_to_float(input("Enter the percentage of amount you wanna give tip: "))
+    tip = percent_to_float(input("What percentage would you like to tip? "))
     
     tip = tip * dollars
 
