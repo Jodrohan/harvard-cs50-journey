@@ -9,18 +9,14 @@ def main():
 
 
     
-
+    
 def quantity(q):
     q = float(q)
     return q
-
-
 
 def cost(c):
     c = c.replace("$","")
     c = float(c)
     return c
 
-    
-
-main()
+    main()
