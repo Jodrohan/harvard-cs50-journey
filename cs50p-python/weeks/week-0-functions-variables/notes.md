@@ -1,300 +1,69 @@
-# CS50P Week 0 — Functions, Variables
+# 🚀 CS50P Week 0: Functions and Variables 
 
-## What I Learned
-
-- Programming is input → process → output
-- Python executes code from top to bottom
-- Variables store data
-- Functions perform reusable actions
-- `input()` gets user input
-- `print()` displays output
-- Strings are text inside quotes
-- `int()` converts text into integers
-- `float()` converts text into decimal numbers
-- `.lower()` converts text to lowercase
-- `return` sends values back from functions
-- `.replace()` replaces matching text inside a string
+## 🧠 1. The Core Philosophy of Python
+* [cite_start]**The Flow:** All programming follows a strict sequence: **Input → Process → Output**[cite: 1125, 1230].
+* [cite_start]**Top-to-Bottom:** Python executes code from top to bottom[cite: 1125].
+* **Inside-Out Execution:** When Python encounters nested functions like `dollars_to_float(input("Cost: "))`, it evaluates from the inside out. [cite_start]It will pause to resolve the `input()` first, and *then* throw that resulting string into the outer function[cite: 1153].
 
 ---
 
-## First Python Program
-
-```python
-print("hello, world")
-```
-
----
-
-## Assignment Completed
-
-### indoor.py
-
-Convert user input into lowercase text using `.lower()`.
-
-```python
-a = input("Enter a string: ")
-print(a.lower())
-```
+## 📦 2. Variables and Data Types
+[cite_start]Variables store data, but you must strictly manage *what kind* of data they hold[cite: 1125].
+* [cite_start]**`input()` is ALWAYS a String:** No matter what the user types (even a number like `50`), `input()` captures it as text (`str`)[cite: 1125, 1137].
+* **No Math on Strings:** You cannot multiply or divide a string. [cite_start]You must cast it to a number first[cite: 1279, 1535].
+* [cite_start]**`int()`:** Converts text into a mathematical integer (whole numbers only)[cite: 1125, 1128].
+* **`float()`:** Converts text into a decimal number. [cite_start]This is **mandatory** when handling currency or percentages[cite: 1125, 1129].
 
 ---
 
-## More String Methods
-
-- `.capitalize()` makes only the first letter capital
-
-```python
-print("rohan".capitalize())
-```
-
-- `.title()` makes the first letter of every word capital
-
-```python
-print("rohan somriya".title())
-```
-
-- `.split()` breaks a single string into multiple parts
-
-```python
-name = "Rohan Somriya"
-first, last = name.split(" ")
-```
-
-This can separate first name and last name.
+## ✂️ 3. String Manipulation Methods
+Methods to clean and format text before processing it.
+* [cite_start]**`.lower()` / `.capitalize()` / `.title()`**: Changes text casing[cite: 1125, 1127]. 
+* [cite_start]**`.split(" ")`**: Breaks a single string into multiple parts based on a separator (e.g., splitting a first and last name)[cite: 1127].
+* [cite_start]**`.replace("old", "new")`**: Swaps specific characters[cite: 1125, 1274]. 
+    * [cite_start]*Pro-Tip:* Highly useful for stripping unwanted mathematical symbols before float conversion (e.g., `meal = meal.replace("$", "")`)[cite: 1275, 1294].
+* [cite_start]**`.strip()`**: Removes accidental whitespace (spaces, tabs, newlines) from the left and right sides of a user's input[cite: 1221].
 
 ---
 
-## Integers
-
-- Integers are whole numbers
-- They do not contain decimal points
-- They can be positive, negative, or zero
-
-### Using int()
-
-```python
-x = int(input("What's x? "))
-```
-
-`int()` converts normal string input into a mathematical integer.
-
-### Addition Calculator
-
-```python
-a = int(input("What's a? "))
-b = int(input("What's b? "))
-
-print(a + b)
-```
+## 🧮 4. Math and Number Formatting
+* **The Modulo Trap (`%`):** In Python, `%` is the **modulo operator**, which calculates the *remainder* of a division. [cite_start]It does **not** calculate percentages[cite: 1388, 1407].
+    * *Correct Percentage Math:* Divide the percentage by 100 to get a decimal, then multiply. [cite_start]Example: `(tip / 100) * meal_cost`[cite: 1420].
+* [cite_start]**F-Strings:** Allows variables to be injected directly into text strings: `f"Hello, {name}"`[cite: 1131, 1566].
+* [cite_start]**Currency Formatting (`:.2f`):** Forces Python to display exactly two digits after the decimal point[cite: 1576]. [cite_start]This prevents outputs like `$7.5` and forces it to display cleanly as `$7.50`[cite: 1579, 1580].
+* [cite_start]**Comma Formatting (`:,`):** Adds commas to large numbers (e.g., `1,000`)[cite: 1131, 1600].
 
 ---
 
-## Floats
-
-- Floats are decimal numbers
-
-### Using float()
-
-```python
-x = float(input("What's x? "))
-```
-
-This allows decimal mathematics in Python.
+## 🛠️ 5. Advanced Built-in Functions
+* [cite_start]**`round(number, digits)`**: Mathematically rounds a floating-point number to the specified number of decimal places[cite: 1130, 1217].
+* [cite_start]**`print()` parameters**: By default, `print()` has hidden behaviors you can override[cite: 1211].
+    * [cite_start]`end=""`: Overrides the default behavior of adding a hidden newline (`\n`) at the end, allowing you to print on the same line[cite: 1212, 1213].
+    * [cite_start]`sep=""`: Overrides the default space inserted when printing multiple arguments[cite: 1214, 1215].
 
 ---
 
-## round()
-
-`round()` is used to round decimal values.
-
-```python
-z = round(3.14159)
-```
-
----
-
-## Number Formatting
-
-### Adding Commas
-
-```python
-a = float(input("What's a? "))
-b = float(input("What's b? "))
-
-z = a + b
-
-print(f"{z:,}")
-```
-
-Output:
-
-```text
-1,000
-```
-
-### Limiting Decimal Places
-
-```python
-print(f"{z:.2f}")
-```
-
-This prints only 2 decimal places.
+## 🏗️ 6. Functions (`def`) and Architecture
+[cite_start]Large programs must be broken into smaller, focused tasks to be understandable and debuggable[cite: 1134].
+* [cite_start]**The Manager (`main()`):** `main()` controls the program flow[cite: 1135]. [cite_start]It gathers the input, hands it to helper functions, receives the clean data back, and executes final calculations and outputs[cite: 1569].
+* [cite_start]**The Tools (Helper Functions):** Custom functions take arguments, process them, and return results[cite: 1308, 1569]. 
+* [cite_start]**Default Parameters:** You can assign a fallback value in a function definition (e.g., `def hello(to="world"):`) if no argument is provided by the user[cite: 1135, 1219].
+* [cite_start]**`print()` vs. `return`:** * `print()` just displays text to the human screen[cite: 1125, 1138].
+    * `return` acts as an envelope. [cite_start]It seals up the calculated value and actually mails it back to the computer/manager (`main()`)[cite: 1125, 1138, 1553]. [cite_start]*Note: `return` is a statement, so parentheses are not needed (`return d`, not `return(d)`)*[cite: 1715].
 
 ---
 
-## Functions with def
+## ⚠️ 7. The "Gotchas" (Critical Mechanics)
 
-- Functions allow reusable code
-- Instead of rewriting the same logic repeatedly, we can create a function and call it whenever needed
-- Functions help keep large programs cleaner and more organized
+### A. Variable Scope ("Soundproof Rooms")
+[cite_start]Functions do not share variables[cite: 1150]. [cite_start]A variable created inside `main()` (like `meal_cost`) is completely invisible to helper functions[cite: 1151, 1477, 1478]. 
+* [cite_start]You **must** pass data into functions via parameters/arguments (e.g., `def dollars_to_float(d):`)[cite: 1506, 1508].
 
----
+### B. The `check50` Robot
+[cite_start]`check50` is a rigid, cloud-based automated grading robot[cite: 1628, 1649]. 
+* [cite_start]**Exact Matches:** It will instantly fail your code for a single extra space, a typo in a prompt, or a differently named function[cite: 1101, 1629].
+* **The Silence Trap:** If an assignment (like `indoor.py`) expects raw input, **do not** include prompt text. [cite_start]Use `x = input()` instead of `x = input("Enter text: ")` or the robot will crash[cite: 1146, 1679, 1680].
 
-## Parameters & Arguments
-
-### Parameter
-
-A variable inside the function definition.
-
-```python
-def hello(name):
-```
-
-`name` is a parameter.
-
-### Argument
-
-The actual value passed into the function.
-
-```python
-hello("Rohan")
-```
-
-`"Rohan"` is an argument.
-
----
-
-## Function Example
-
-```python
-def hello(name):
-    print("hello", name)
-
-hello("Rohan")
-hello("David")
-```
-
----
-
-## Focused Functions
-
-- It is better for one function to do one specific task
-- Smaller functions make programs easier to:
-  - understand
-  - debug
-  - maintain
-
----
-
-## Default Parameters
-
-```python
-def hello(to="world"):
-    print("hello", to)
-```
-
-If no argument is given, `"world"` becomes the default value.
-
----
-
-## Using main()
-
-`main()` is commonly used to control program flow.
-
-```python
-def main():
-    name = input("Enter name: ")
-    hello(name)
-
-def hello(to="world"):
-    print("hello", to)
-
-main()
-```
-
----
-
-## return
-
-`return` sends a value back from a function.
-
-```python
-def square(n):
-    return n * n
-```
-
----
-
-## Square Calculator Program
-
-```python
-def main():
-    x = int(input("Enter number: "))
-    print("x squared is", square(x))
-
-def square(n):
-    return pow(n, 2)
-
-main()
-```
-
-### Program Flow
-
-1. User enters a number
-2. `square(x)` is called
-3. `pow(n, 2)` calculates the square
-4. `return` sends the result back
-5. `print()` displays the output
-
----
-
-## Important Concepts
-
-### input() always returns a string
-
-```python
-x = input("What's x? ")
-```
-
-Even if user types:
-
-```text
-5
-```
-
-Python still stores it as:
-
-```python
-"5"
-```
-
-That is why `int()` or `float()` is needed for mathematics.
-
----
-
-### Difference Between print() and return()
-
-- `print()` displays output
-- `return` sends a value back from a function
-
-```python
-def square(n):
-    return n * n
-```
-
----
-
-### Function Flow
-
-```text
-main() → calls another function → function returns value → output is printed
-```
+### C. Git Workflow (Atomic Commits)
+* [cite_start]Never dump all fixes into one massive commit[cite: 1692]. 
+* [cite_start]A repository is a professional timeline of logical changes[cite: 1693]. [cite_start]Practice **atomic commits**: one logical fix = one commit (e.g., `git commit -m "Fix check50 formatting in indoor.py"`)[cite: 1696, 1699].
