@@ -19,4 +19,4 @@ def cost(c):
     c = float(c)
     return c
 
-    main()
+main()
