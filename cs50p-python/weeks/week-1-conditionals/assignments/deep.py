@@ -10,11 +10,11 @@ The Rules:
 3. If they type anything else, print "No".
 """
 
-# Step 1: Prompt the user, and immediately clean the string
-answer = input("What is the Answer to the Great Question of Life, the Universe, and Everything? ").strip().lower()
 
-# Step 2: Check the cleaned answer against the three correct possibilities
-if answer == "42" or answer == "forty-two" or answer == "forty two":
+
+answer = input("Whats the answer of the question : ").strip().lower()
+
+if answer == "42" or  answer == "forty-two" or answer =="forty two":
     print("Yes")
 else:
     print("No")
