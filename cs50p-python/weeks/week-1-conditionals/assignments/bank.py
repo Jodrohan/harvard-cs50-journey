@@ -12,12 +12,12 @@ The Rules:
 5. Ignore any leading whitespace in the user's input, and treat it case-insensitively.
 """
 
-
-greeting = input("Greeting: ").strip().lower()
-
+greeting = input("Greetings: ").lower().strip()
 if greeting.startswith("hello"):
     print("$0")
 elif greeting.startswith("h"):
     print("$20")
 else:
-    print("$100")
+    print("100")
+
+
