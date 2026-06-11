@@ -6,33 +6,46 @@ the name of a variable in camel case and outputs the corresponding name in snake
 Assume that the user's input will indeed be in camel case.
 """
 
+'''def main():
+    camel_case = snake_case(input("Enter the text: "))
+    
+    print(camel_case)
 
-def main():
-    # Get user input
-    camel_input = input("camelCase: ")
-    
-    
-    snake_output = convert_to_snake(camel_input)
-    
-    
-    print(f"snake_case: {snake_output}")
 
-def convert_to_snake(camel_str):
-    
-    snake_result = ""
-    
-    
-    for char in camel_str:
+
+def snake_case(s):
+    result = ("")
+    for char in s:
         
         if char.isupper():
-            
-            snake_result += "_" + char.lower()
+            result +="_" + char.lower()
         else:
-            
-            snake_result += char
-            
-    return snake_result
+            result += char
 
 
-if __name__ == "__main__":
-    main()
+    return result
+
+
+
+main()
+'''
+
+def main():
+    camel_case = snake_case(input("Enter the text: "))
+    print(camel_case)
+
+def snake_case(s):
+    result=("")
+    for char in s:
+        if char.isupper():
+            result += "_" + char.lower()
+        else:
+            result += char
+
+    return result
+
+main()
+
+            
+
+
