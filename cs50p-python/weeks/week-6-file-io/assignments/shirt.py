@@ -27,3 +27,42 @@ Requirements:
 Usage:
     $ python shirt.py before.jpg after.jpg
 """
+import sys
+import os
+from PIL import Image, ImageOps
+
+
+def main():
+
+    if len(sys.argv) > 3:
+        sys.exit("Too many arguments")
+    if len(sys.argv) < 3:
+        sys.exit("Too few arguments")
+
+    accepted_extensions = (".jpg", ".jpeg", ".png")
+
+    if not sys.argv[1].lower().endswith(accepted_extensions):
+        sys.exit("File not supported")
+
+    if not sys.argv[2].lower().endswith(accepted_extensions):
+        sys.exit("File not supported")
+
+    file_extension1 = os.path.splitext(sys.argv[1])[1].lower()
+    file_extension2 = os.path.splitext(sys.argv[2])[1].lower()
+
+    if file_extension1 != file_extension2:
+        sys.exit("Input and output have different extensions")
+
+    try:
+        input_image = Image.open(sys.argv[1])
+        shirt = Image.open("shirt.png")
+    except FileNotFoundError:
+        sys.exit("Input does not exist")
+
+    output = ImageOps.fit(input_image, shirt.size)
+    output.paste(shirt, shirt)
+    output.save(sys.argv[2])
+
+
+if __name__ == "__main__":
+    main()
