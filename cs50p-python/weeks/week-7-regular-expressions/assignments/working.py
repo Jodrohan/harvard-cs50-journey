@@ -36,40 +36,40 @@ def main():
 def convert(s):
     match = re.search(r"^(\d{1,2})(?::(\d{2}))? (AM|PM) to (\d{1,2})(?::(\d{2}))? (AM|PM)$", s)
     
-    if not match:
-        raise ValueError
+    if match:
+        start_hour = match.group(1)
+        start_minute = match.group(2)
+        start_ampm = match.group(3)
         
-    start_hour = match.group(1)
-    start_minute = match.group(2)
-    start_ampm = match.group(3)
-    
-    end_hour = match.group(4)
-    end_minute = match.group(5)
-    end_ampm = match.group(6)
+        end_hour = match.group(4)
+        end_minute = match.group(5)
+        end_ampm = match.group(6)
 
-    if start_minute == None:
-        start_minute = "00"
-    if end_minute == None:
-        end_minute = "00"
+        if start_minute is None:
+            start_minute = "00"
+        if end_minute is None:
+            end_minute = "00"
 
-    if int(start_hour) > 12 or int(start_minute) >= 60:
+        if int(start_hour) > 12 or int(start_minute) >= 60:
+            raise ValueError
+        if int(end_hour) > 12 or int(end_minute) >= 60:
+            raise ValueError
+
+        start_hour = int(start_hour)
+        if start_ampm == "PM" and start_hour != 12:
+            start_hour += 12
+        elif start_ampm == "AM" and start_hour == 12:
+            start_hour = 0
+
+        end_hour = int(end_hour)
+        if end_ampm == "PM" and end_hour != 12:
+            end_hour += 12
+        elif end_ampm == "AM" and end_hour == 12:
+            end_hour = 0
+
+        return f"{start_hour:02}:{start_minute} to {end_hour:02}:{end_minute}"
+    else:
         raise ValueError
-    if int(end_hour) > 12 or int(end_minute) >= 60:
-        raise ValueError
-
-    start_hour = int(start_hour)
-    if start_ampm == "PM" and start_hour != 12:
-        start_hour += 12
-    elif start_ampm == "AM" and start_hour == 12:
-        start_hour = 0
-
-    end_hour = int(end_hour)
-    if end_ampm == "PM" and end_hour != 12:
-        end_hour += 12
-    elif end_ampm == "AM" and end_hour == 12:
-        end_hour = 0
-
-    return f"{start_hour:02}:{start_minute} to {end_hour:02}:{end_minute}"
 
 
 if __name__ == "__main__":
