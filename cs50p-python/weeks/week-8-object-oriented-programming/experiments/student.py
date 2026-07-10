@@ -1,24 +1,49 @@
+import random
+
 class Student:
+    houses = ["Shivalik", "Niligri", "Aravali", "Udaygiri"]
+
     def __init__(self, name, house):
-        if not name:
-            raise ValueError
-        if house not in ["Shivalik", "Niligri", "Aravali", "Udaygiri"]:
-            raise ValueError("Invalid House")
         self.name = name
         self.house = house
 
+    def __str__(self):
+        return f"{self.name} from {self.house}"
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        if not name:
+            raise ValueError("Missing name")
+        self._name = name
+
+    @property
+    def house(self):
+        return self._house
+
+    @house.setter
+    def house(self, house):
+        if house not in Student.houses:
+            raise ValueError("Invalid House")
+        self._house = house
+
+    @classmethod
+    def get(cls):
+        name = input("Name: ")
+        house = input("House: ")
+        return cls(name, house)
+
+    @staticmethod
+    def generate_id():
+        return random.randint(1000, 9999)
 
 def main():
-    student = get_student()
-
-    print(f"{student.name} from {student.house}")
-
-
-def get_student():
-    name = input("Name: ")
-    house = input("House: ")
-    return Student(name, house)
-
+    student = Student.get()
+    student_id = Student.generate_id()
+    print(f"Student ID {student_id}: {student}")
 
 if __name__ == "__main__":
     main()
