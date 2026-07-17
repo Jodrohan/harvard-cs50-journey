@@ -17,28 +17,22 @@ then try instantiating one with an empty name to see if your ValueError works.
 
 class Pokemon:
     def __init__(self, name, type_):
-        self.name = name
-        self.type_ = type_
-class Pokemon:
-    def __init__(self, name, type_):
-        # Validate that name and type_ are not empty strings
         if not name or not type_:
             raise ValueError("Name and type cannot be empty")
             
         self.name = name
         self.type_ = type_
-def __str__(self):
-        # Return string in the format: Name (Type Type)
+
+    def __str__(self):
         return f"{self.name} ({self.type_} Type)"
 
+
 def main():
-    # Instantiate a valid entry and print it to verify __str__
     pikachu = Pokemon("Pikachu", "Electric")
     print(pikachu)
 
-    # Verify that empty inputs correctly trigger the ValueError
     try:
-        invalid = Pokemon("", "Water")
+        Pokemon("", "Water")
     except ValueError as e:
         print(f"Validation successful: {e}")
 
