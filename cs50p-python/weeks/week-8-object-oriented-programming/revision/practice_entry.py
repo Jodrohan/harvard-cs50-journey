@@ -14,3 +14,8 @@ Instructions:
 Test your code by instantiating a valid Pokémon and printing it, 
 then try instantiating one with an empty name to see if your ValueError works.
 """
+
+class Pokemon:
+    def __init__(self, name, type_):
+        self.name = name
+        self.type_ = type_
