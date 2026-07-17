@@ -30,3 +30,18 @@ class Pokemon:
 def __str__(self):
         # Return string in the format: Name (Type Type)
         return f"{self.name} ({self.type_} Type)"
+
+def main():
+    # Instantiate a valid entry and print it to verify __str__
+    pikachu = Pokemon("Pikachu", "Electric")
+    print(pikachu)
+
+    # Verify that empty inputs correctly trigger the ValueError
+    try:
+        invalid = Pokemon("", "Water")
+    except ValueError as e:
+        print(f"Validation successful: {e}")
+
+
+if __name__ == "__main__":
+    main()
