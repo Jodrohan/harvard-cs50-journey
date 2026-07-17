@@ -19,3 +19,11 @@ class Pokemon:
     def __init__(self, name, type_):
         self.name = name
         self.type_ = type_
+class Pokemon:
+    def __init__(self, name, type_):
+        # Validate that name and type_ are not empty strings
+        if not name or not type_:
+            raise ValueError("Name and type cannot be empty")
+            
+        self.name = name
+        self.type_ = type_
