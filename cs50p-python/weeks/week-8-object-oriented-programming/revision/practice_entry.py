@@ -27,3 +27,6 @@ class Pokemon:
             
         self.name = name
         self.type_ = type_
+def __str__(self):
+        # Return string in the format: Name (Type Type)
+        return f"{self.name} ({self.type_} Type)"
