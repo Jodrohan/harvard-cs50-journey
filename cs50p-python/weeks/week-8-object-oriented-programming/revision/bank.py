@@ -25,3 +25,38 @@ You may assume that deposit amounts are always positive integers.
 
 Do not write any code outside of the class definition.
 """
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError("Insufficient funds.")
+        self.balance -= amount
+
+    def display(self):
+        return f"{self.owner}'s balance: ${self.balance}"
+
+
+def main():
+    account = BankAccount("Alice", 100)
+
+    account.deposit(50)
+    print(account.display())
+
+    account.withdraw(30)
+    print(account.display())
+
+    try:
+        account.withdraw(200)
+    except ValueError as e:
+        print(e)
+
+
+if __name__ == "__main__":
+    main()
