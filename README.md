@@ -1,6 +1,6 @@
 # Harvard CS50 Journey
 
-![Overall Progress](./progress.svg)
+**Journey Progress:** `[██████████████████████████████] 100.0%`
 
 A long-term structured learning repository documenting my progression through Harvard's CS50 courses.
 
