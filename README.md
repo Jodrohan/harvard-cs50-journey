@@ -1,6 +1,6 @@
 # Harvard CS50 Journey
 
-![Journey Progress](https://img.shields.io/badge/Journey_Progress-0.0%25-blue)
+![Journey Progress](https://img.shields.io/badge/Journey_Progress-103.12%25-blue)
 
 A long-term structured learning repository documenting my progression through Harvard's CS50 courses.
 

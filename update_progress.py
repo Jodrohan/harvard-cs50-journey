@@ -1,22 +1,27 @@
 import os
 import re
 
-# 1. Define your exact folder target (Total = 33 modules)
+# 1. Define your exact folder target (Total = 32 modules)
 SYLLABUS = {
-    "CS50P": 10,       
-    "CS50x": 11,       
-    "CS50_Cyber": 5,   
-    "CS50_AI": 7       
+    "cs50p-python": 9,       
+    "cs50x-computer-science": 11,       
+    "cs50-cybersecurity": 5,   
+    "cs50-ai-python": 7       
 }
 
 # 2. Count completed folders
 def count_completed_modules(course_name):
-    if not os.path.exists(course_name):
+    # Check if the course has a nested "weeks" directory
+    target_dir = course_name
+    if os.path.exists(os.path.join(course_name, "weeks")):
+        target_dir = os.path.join(course_name, "weeks")
+
+    if not os.path.exists(target_dir):
         return 0
     
     completed = 0
-    for item in os.listdir(course_name):
-        item_path = os.path.join(course_name, item)
+    for item in os.listdir(target_dir):
+        item_path = os.path.join(target_dir, item)
         # Counts folders that start with "week" or "project"
         if os.path.isdir(item_path) and (item.startswith("week") or "project" in item):
             completed += 1
