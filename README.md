@@ -1,6 +1,6 @@
 # Harvard CS50 Journey
 
-**Journey Progress:** `[□□□□□□□□□] [□□□□□□□□□□□] [□□□□□] [□□□□□□□] 0.0%`
+**Journey Progress:** `[■■■■■■■□□] [□□□□□□□□□□□] [□□□□□] [□□□□□□□] 21.9%`
 
 A long-term structured learning repository documenting my progression through Harvard's CS50 courses.
 

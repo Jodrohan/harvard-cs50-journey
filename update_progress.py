@@ -6,7 +6,7 @@ import re
 # Simply change these numbers as you finish weeks.
 # ==========================================
 COMPLETED = {
-    "cs50p-python": 0,           # Max: 9
+    "cs50p-python": 7,           # Max: 9
     "cs50x-computer-science": 0, # Max: 11
     "cs50-cybersecurity": 0,     # Max: 5
     "cs50-ai-python": 0          # Max: 7
