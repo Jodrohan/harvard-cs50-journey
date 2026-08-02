@@ -21,9 +21,20 @@ def count_completed_modules(course_name):
     completed = 0
     for item in os.listdir(target_dir):
         item_path = os.path.join(target_dir, item)
-        # Strict check: must be a directory AND start with 'week' or 'project'
+        
+        # Check if it's a week/project directory
         if os.path.isdir(item_path) and (item.startswith("week") or item.startswith("project")):
-            completed += 1
+            
+            # THE FIX: Check if there is actual work inside the folder
+            has_work = False
+            for root, dirs, files in os.walk(item_path):
+                # Count if we find Python files, C files, or notes (ignore hidden/git files)
+                if any(f.endswith(".py") or f.endswith(".c") or f == "notes.md" for f in files):
+                    has_work = True
+                    break
+            
+            if has_work:
+                completed += 1
             
     return completed
 
@@ -44,7 +55,6 @@ bar_length = 30
 filled_length = math.floor((percentage / 100) * bar_length)
 empty_length = bar_length - filled_length
 
-# Using solid block (U+2588) and light shade (U+2591)
 bar = ('█' * filled_length) + ('░' * empty_length)
 unicode_progress = f"**Journey Progress:** `[{bar}] {percentage}%`"
 
@@ -54,17 +64,14 @@ if os.path.exists(readme_path):
     with open(readme_path, "r", encoding="utf-8") as file:
         readme_content = file.read()
 
-    # Regex looks for the exact formatting we define below
     pattern = r"\*\*Journey Progress:\*\* `\[.*?\] .*?%`"
     
     if re.search(pattern, readme_content):
         new_readme = re.sub(pattern, unicode_progress, readme_content)
         with open(readme_path, "w", encoding="utf-8") as file:
             file.write(new_readme)
-        print("README.md updated with Unicode bar successfully.")
+        print("README.md updated with accurate progress.")
     else:
         print("Error: Could not find the target string in README.md.")
-        print("Make sure this exact line exists in your README:")
-        print("**Journey Progress:** `[░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 0.0%`")
 else:
     print("Error: README.md not found.")
