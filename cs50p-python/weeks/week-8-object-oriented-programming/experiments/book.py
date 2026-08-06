@@ -15,3 +15,25 @@ Example Usage:
     s.category = "Hex"   # This should update successfully
     s.category = "Jinx"  # This should raise ValueError: Invalid category
 """
+class Spell:
+    def __init__(self, name, category):
+        self.name = name
+        self.category = category
+        
+    def __str__(self):
+        return f"{self.name} (Category: {self.category})"
+        
+    @property
+    def category(self):
+        return self._category
+        
+    @category.setter
+    def category(self, value):
+        if value not in ["Charm", "Curse", "Hex"]:
+            raise ValueError("Invalid category")
+        self._category = value
+
+s = Spell("Lumos", "Charm")
+print(s)
+s.category = "Hex"
+print(s)
