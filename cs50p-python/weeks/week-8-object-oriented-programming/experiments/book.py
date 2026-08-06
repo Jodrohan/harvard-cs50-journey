@@ -15,25 +15,34 @@ Example Usage:
     s.category = "Hex"   # This should update successfully
     s.category = "Jinx"  # This should raise ValueError: Invalid category
 """
+
 class Spell:
     def __init__(self, name, category):
         self.name = name
-        self.category = category
+        # This automatically uses the setter below to check the category
+        self.category = category  
         
     def __str__(self):
+        # How the spell looks when we print it
         return f"{self.name} (Category: {self.category})"
         
     @property
     def category(self):
+        # Get the hidden category variable
         return self._category
         
     @category.setter
     def category(self, value):
+        # Make sure it's a valid spell type before saving it
         if value not in ["Charm", "Curse", "Hex"]:
             raise ValueError("Invalid category")
         self._category = value
 
+
+# Test the code
 s = Spell("Lumos", "Charm")
 print(s)
+
+# Change the category to test the setter
 s.category = "Hex"
 print(s)
